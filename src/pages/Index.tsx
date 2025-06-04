@@ -4,7 +4,8 @@ import Header from '@/components/Header';
 import MotivationalQuote from '@/components/MotivationalQuote';
 import TaskCard from '@/components/TaskCard';
 import AddTaskForm from '@/components/AddTaskForm';
-import ProgressStats from '@/components/ProgressStats';
+import InteractiveStats from '@/components/InteractiveStats';
+import ConfettiAnimation from '@/components/ConfettiAnimation';
 
 interface Task {
   id: string;
@@ -60,13 +61,22 @@ const sampleTasks: Task[] = [
 
 const Index = () => {
   const [tasks, setTasks] = useState<Task[]>(sampleTasks);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const handleToggleTask = (id: string) => {
-    setTasks(prevTasks => 
-      prevTasks.map(task => 
+    setTasks(prevTasks => {
+      const updatedTasks = prevTasks.map(task => 
         task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
+      );
+      
+      // Check if task was just completed
+      const toggledTask = updatedTasks.find(task => task.id === id);
+      if (toggledTask?.completed) {
+        setShowConfetti(true);
+      }
+      
+      return updatedTasks;
+    });
   };
 
   const handleAddTask = (newTask: Omit<Task, 'id' | 'completed'>) => {
@@ -82,8 +92,13 @@ const Index = () => {
   const todayTasks = tasks.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pastel-lavender-light via-pastel-cream to-pastel-mint-light">
+    <div className="min-h-screen bg-gradient-to-br from-pastel-lavender-light via-pastel-cream to-pastel-mint-light relative">
       <Header />
+      
+      <ConfettiAnimation 
+        isActive={showConfetti} 
+        onComplete={() => setShowConfetti(false)} 
+      />
       
       <main className="max-w-6xl mx-auto px-6 py-8 space-y-8">
         {/* Welcome Section */}
@@ -99,11 +114,11 @@ const Index = () => {
         {/* Motivational Quote */}
         <MotivationalQuote />
 
-        {/* Progress Statistics */}
-        <ProgressStats 
+        {/* Interactive Statistics */}
+        <InteractiveStats 
           totalTasks={todayTasks}
           completedTasks={completedTasks}
-          todayTasks={todayTasks}
+          streak={3}
         />
 
         {/* Tasks Section */}
@@ -124,6 +139,18 @@ const Index = () => {
                 />
               ))}
             </div>
+            
+            {tasks.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-6xl mb-4">🌈</div>
+                <h3 className="text-xl font-semibold text-purple-700 mb-2">
+                  Belum ada task hari ini!
+                </h3>
+                <p className="text-purple-600">
+                  Mulai tambahkan task untuk memulai petualangan produktif! ✨
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Add Task Form */}
