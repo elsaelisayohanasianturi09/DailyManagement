@@ -179,7 +179,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({
             <label className="block text-sm font-medium text-purple-700 mb-2">Waktu (Opsional)</label>
             <div className="relative">
               <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-purple-400" />
-              <Input type="time" value={time} onChange={e => setTime(e.target.value)} className="border-2 border-purple-200 focus:border-purple-400 rounded-xl pl-10 bg-white/50" />
+              <Input type="time" value={time} onChange={e => setTime(e.target.value)} className="border-2 border-purple-200 focus:border-purple-400 rounded-xl pl-10 bg-violet-400" />
             </div>
           </div>
         </div>
