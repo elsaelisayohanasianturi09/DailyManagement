@@ -21,13 +21,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onToggle }) => {
 
   const priorityColors = {
     low: 'from-pastel-mint to-pastel-mint-light',
-    medium: 'from-pastel-peach to-pastel-peach-light',
+    medium: 'from-orange-100 to-orange-200',
     high: 'from-pastel-rose-pink to-pastel-lavender-light'
   };
 
   const priorityBorders = {
     low: 'border-green-200',
-    medium: 'border-orange-200',
+    medium: 'border-orange-300',
     high: 'border-pink-200'
   };
 

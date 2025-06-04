@@ -198,7 +198,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
                 </SelectTrigger>
                 <SelectContent className="bg-white/95 backdrop-blur-sm border-purple-200 rounded-xl">
                   <SelectItem value="low" className="hover:bg-green-50">🌱 Rendah</SelectItem>
-                  <SelectItem value="medium" className="hover:bg-yellow-50">⭐ Sedang</SelectItem>
+                  <SelectItem value="medium" className="hover:bg-orange-50">⭐ Sedang</SelectItem>
                   <SelectItem value="high" className="hover:bg-red-50">🔥 Tinggi</SelectItem>
                 </SelectContent>
               </Select>
