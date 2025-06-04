@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
                 <Input
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="border-purple-200 focus:border-purple-400"
+                  className="border-purple-200 focus:border-purple-400 bg-white text-gray-800 placeholder:text-gray-500"
                   placeholder="Masukkan nama kamu 💖"
                 />
               </div>
@@ -68,7 +68,7 @@ const Settings: React.FC = () => {
               <div>
                 <label className="block text-sm font-medium text-purple-600 mb-2">Tema Warna</label>
                 <Select value={theme} onValueChange={setTheme}>
-                  <SelectTrigger className="border-purple-200 focus:border-purple-400">
+                  <SelectTrigger className="border-purple-200 focus:border-purple-400 bg-white text-gray-800">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
