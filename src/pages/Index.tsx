@@ -14,6 +14,7 @@ interface Task {
   priority: 'low' | 'medium' | 'high';
   completed: boolean;
   time?: string;
+  date?: Date;
 }
 
 const sampleTasks: Task[] = [
@@ -69,7 +70,6 @@ const Index = () => {
         task.id === id ? { ...task, completed: !task.completed } : task
       );
       
-      // Check if task was just completed
       const toggledTask = updatedTasks.find(task => task.id === id);
       if (toggledTask?.completed) {
         setShowConfetti(true);

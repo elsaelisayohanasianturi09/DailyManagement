@@ -1,44 +1,32 @@
 
 import React from 'react';
-import { Star, Heart, Settings } from 'lucide-react';
+import Settings from './Settings';
 
 const Header = () => {
-  const currentTime = new Date();
-  const hour = currentTime.getHours();
-  
-  const getGreeting = () => {
-    if (hour < 12) return { text: "Good Morning", emoji: "🌅" };
-    if (hour < 17) return { text: "Good Afternoon", emoji: "☀️" };
-    return { text: "Good Evening", emoji: "🌙" };
-  };
-
-  const greeting = getGreeting();
-
   return (
-    <header className="bg-white/70 backdrop-blur-md border-b border-purple-200 shadow-sm sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-pastel-lavender-light via-pastel-rose-pink to-pastel-cream shadow-lg border-b-2 border-purple-200/30">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center animate-float">
-              <span className="text-2xl">✨</span>
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-pastel-purple-soft to-pastel-rose-pink rounded-2xl flex items-center justify-center shadow-md animate-float">
+              <span className="text-2xl">📅</span>
             </div>
             <div>
               <h1 className="text-2xl font-bold text-purple-800 font-cute">
                 Elsa's Daily Life Manager
               </h1>
               <p className="text-purple-600 text-sm font-cozy">
-                {greeting.emoji} {greeting.text}, beautiful! 💖
+                Your magical productivity companion ✨
               </p>
             </div>
           </div>
-
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 bg-gradient-to-r from-pink-200 to-purple-200 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
-              <Heart className="w-5 h-5 text-purple-600 animate-pulse-soft" />
-            </button>
-            <button className="w-10 h-10 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200">
-              <Settings className="w-5 h-5 text-purple-600" />
-            </button>
+          
+          <div className="flex items-center space-x-3">
+            <div className="hidden md:flex items-center space-x-2">
+              <span className="text-purple-600 font-cozy">Today is magical!</span>
+              <span className="text-2xl animate-bounce-gentle">🌟</span>
+            </div>
+            <Settings />
           </div>
         </div>
       </div>
